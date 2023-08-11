@@ -265,7 +265,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForVBScript(String input) {
+    public @RUntainted String encodeForVBScript(String input) {
         if( input == null ) {
             return null;
         }
