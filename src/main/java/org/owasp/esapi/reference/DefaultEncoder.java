@@ -303,12 +303,12 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForLDAP(String input, boolean encodeWildcards) {
+    public @RUntainted String encodeForLDAP(String input, boolean encodeWildcards) {
         if( input == null ) {
             return null;
         }
         // TODO: replace with LDAP codec
-        StringBuilder sb = new StringBuilder();
+        @RUntainted StringBuilder sb = new StringBuilder();
         // According to Microsoft docs [1,2], the forward slash ('/') MUST be escaped.
         // According to RFC 4515 Section 3 [3], the forward slash (and other characters) MAY be escaped.
         // Since Microsoft is a MUST, escape forward slash for all implementations. Also see discussion at [4].
@@ -358,7 +358,7 @@ public class DefaultEncoder implements Encoder {
             return null;
         }
         // TODO: replace with DN codec
-        StringBuilder sb = new StringBuilder();
+        @RUntainted StringBuilder sb = new StringBuilder();
         if ((input.length() > 0) && ((input.charAt(0) == ' ') || (input.charAt(0) == '#'))) {
             sb.append('\\'); // add the leading backslash if needed
         }
