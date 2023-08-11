@@ -29,6 +29,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Encoder;
 import org.owasp.esapi.Logger;
@@ -127,7 +129,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String canonicalize( String input ) {
+    public @RUntainted String canonicalize(String input ) {
         if ( input == null ) {
             return null;
         }
@@ -142,7 +144,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String canonicalize( String input, boolean strict) {
+    public @RUntainted String canonicalize( String input, boolean strict) {
         return canonicalize(input, strict, strict);
     }
 
@@ -150,7 +152,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String canonicalize( String input, boolean restrictMultiple, boolean restrictMixed ) {
+    public @RUntainted String canonicalize( String input, boolean restrictMultiple, boolean restrictMixed ) {
         if ( input == null ) {
             return null;
         }
@@ -210,7 +212,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForHTML(String input) {
+    public @RUntainted String encodeForHTML(String input) {
         if( input == null ) {
             return null;
         }
@@ -220,7 +222,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String decodeForHTML(String input) {
+    public @RUntainted String decodeForHTML(String input) {
 
         if( input == null ) {
             return null;
@@ -231,7 +233,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForHTMLAttribute(String input) {
+    public @RUntainted String encodeForHTMLAttribute(String input) {
         if( input == null ) {
             return null;
         }
@@ -242,7 +244,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForCSS(String input) {
+    public @RUntainted String encodeForCSS(String input) {
         if( input == null ) {
             return null;
         }
@@ -253,7 +255,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForJavaScript(String input) {
+    public @RUntainted String encodeForJavaScript(String input) {
         if( input == null ) {
             return null;
         }
@@ -351,7 +353,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForDN(String input) {
+    public @RUntainted String encodeForDN(String input) {
         if( input == null ) {
             return null;
         }
@@ -403,7 +405,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForXPath(String input) {
+    public @RUntainted String encodeForXPath(String input) {
         if( input == null ) {
             return null;
         }
@@ -413,7 +415,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForXML(String input) {
+    public @RUntainted String encodeForXML(String input) {
         if( input == null ) {
             return null;
         }
@@ -423,7 +425,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForXMLAttribute(String input) {
+    public @RUntainted String encodeForXMLAttribute(String input) {
         if( input == null ) {
             return null;
         }
@@ -433,7 +435,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForURL(String input) throws EncodingException {
+    public @RUntainted String encodeForURL(String input) throws EncodingException {
         if ( input == null ) {
             return null;
         }
@@ -449,7 +451,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String decodeFromURL(String input) throws EncodingException {
+    public @RUntainted String decodeFromURL(String input) throws EncodingException {
         if ( input == null ) {
             return null;
         }
@@ -466,7 +468,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForBase64(byte[] input, boolean wrap) {
+    public @RUntainted String encodeForBase64(byte[] input, boolean wrap) {
         if ( input == null ) {
             return null;
         }
@@ -498,7 +500,7 @@ public class DefaultEncoder implements Encoder {
      * @return Canonicalized URI string.
      * @throws IntrusionException
      */
-    public String getCanonicalizedURI(URI dirtyUri) throws IntrusionException{
+    public @RUntainted String getCanonicalizedURI(URI dirtyUri) throws IntrusionException{
 
 //        From RFC-3986 section 3
 //          URI         = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
