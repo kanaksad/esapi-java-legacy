@@ -591,8 +591,8 @@ public class DefaultEncoder implements Encoder {
      * @param parseMap The parts of the URL to put back together.
      * @return The canonicalized URL.
      */
-    protected String buildUrl(Map<UriSegment, String> parseMap){
-        StringBuilder sb = new StringBuilder();
+    protected @RUntainted String buildUrl(Map<UriSegment, String> parseMap){
+        @RUntainted StringBuilder sb = new StringBuilder();
         sb.append(parseMap.get(UriSegment.SCHEME))
         .append("://")
         //can't use SCHEMESPECIFICPART for this, because we need to canonicalize all the parts of the query.
