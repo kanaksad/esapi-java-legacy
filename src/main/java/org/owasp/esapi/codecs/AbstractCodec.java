@@ -16,6 +16,8 @@
 package org.owasp.esapi.codecs;
 
 
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
+
 /**
  * The {@code Coded} interface defines a set of methods for encoding and decoding application level encoding schemes,
  * such as HTML entity encoding and percent encoding (aka URL encoding). {@code Coded}s are used in output encoding
@@ -67,7 +69,7 @@ public abstract class AbstractCodec<T> implements Codec<T> {
      * behavior moving forward.
      */
     @Override
-    public String encode(char[] immune, String input) {
+    public @RUntainted String encode(char[] immune, String input) {
         StringBuilder sb = new StringBuilder();
         for(int offset  = 0; offset < input.length(); ) {
             final int point = input.codePointAt(offset);
