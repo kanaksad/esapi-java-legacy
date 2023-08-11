@@ -33,6 +33,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RPolyTainted;
 import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.ProgressListener;
@@ -888,7 +889,7 @@ public class DefaultHTTPUtilities implements org.owasp.esapi.HTTPUtilities {
      *
      * This implementation checks against the list of safe redirect locations defined in ESAPI.properties.
      */
-    public void sendRedirect(HttpServletResponse response, String location) throws AccessControlException, IOException {
+    public void sendRedirect(HttpServletResponse response, @RUntainted String location) throws AccessControlException, IOException {
         if (!ESAPI.validator().isValidRedirectLocation("Redirect", location, false)) {
             logger.fatal(Logger.SECURITY_FAILURE, "Bad redirect location: " + location);
             throw new AccessControlException("Redirect failed", "Bad redirect location: " + location);
@@ -899,7 +900,7 @@ public class DefaultHTTPUtilities implements org.owasp.esapi.HTTPUtilities {
     /**
      * {@inheritDoc}
      */
-    public void sendRedirect( String location )  throws AccessControlException,IOException {
+    public void sendRedirect(@RUntainted String location )  throws AccessControlException,IOException {
         sendRedirect( getCurrentResponse(), location);
     }
 

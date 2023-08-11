@@ -24,6 +24,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.owasp.esapi.errors.AccessControlException;
 import org.owasp.esapi.errors.AuthenticationException;
 import org.owasp.esapi.errors.EncryptionException;
@@ -532,7 +534,7 @@ public interface HTTPUtilities
      *
      * @see HTTPUtilities#setCurrentHTTP(HttpServletRequest, HttpServletResponse)
      */
-    void sendRedirect(String location) throws AccessControlException, IOException;
+    void sendRedirect(@RUntainted String location) throws AccessControlException, IOException;
 
 
     /**
@@ -546,7 +548,7 @@ public interface HTTPUtilities
      * @throws AccessControlException
      * @throws IOException
      */
-    void sendRedirect(HttpServletResponse response, String location) throws AccessControlException, IOException;
+    void sendRedirect(HttpServletResponse response, @RUntainted String location) throws AccessControlException, IOException;
 
     /**
      * Calls setContentType with the *current* request and response.
