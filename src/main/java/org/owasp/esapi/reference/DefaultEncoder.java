@@ -638,7 +638,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForJSON(String input) {
+    public @RUntainted String encodeForJSON(String input) {
         if( input == null ) {
             return null;
         }
