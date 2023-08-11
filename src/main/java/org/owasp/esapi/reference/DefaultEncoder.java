@@ -276,7 +276,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForSQL(Codec codec, String input) {
+    public @RUntainted String encodeForSQL(Codec codec, String input) {
         if( input == null ) {
             return null;
         }

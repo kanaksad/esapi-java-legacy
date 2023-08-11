@@ -16,6 +16,8 @@
 package org.owasp.esapi.codecs;
 
 
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
+
 /**
  * The Codec interface defines a set of methods for encoding and decoding application level encoding schemes,
  * such as HTML entity encoding and percent encoding (aka URL encoding). Codecs are used in output encoding
@@ -40,7 +42,7 @@ public interface Codec<T> {
      *         the String to encode
      * @return the encoded String
      */
-    public String encode(char[] immune, String input);
+    public @RUntainted String encode(char[] immune, String input);
 
     /**
      * Default implementation that should be overridden in specific codecs.
