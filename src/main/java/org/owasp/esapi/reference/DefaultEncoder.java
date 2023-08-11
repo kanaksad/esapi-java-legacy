@@ -286,7 +286,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForOS(Codec codec, String input) {
+    public @RUntainted String encodeForOS(Codec codec, String input) {
         if( input == null ) {
             return null;
         }
@@ -296,7 +296,7 @@ public class DefaultEncoder implements Encoder {
     /**
      * {@inheritDoc}
      */
-    public String encodeForLDAP(String input) {
+    public @RUntainted String encodeForLDAP(String input) {
         return encodeForLDAP(input, true);
     }
 

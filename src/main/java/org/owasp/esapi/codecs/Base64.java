@@ -1,5 +1,6 @@
 package org.owasp.esapi.codecs;
 
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Logger;
 
@@ -559,7 +560,7 @@ public class Base64
      * @see Base64#DONT_BREAK_LINES
      * @since 2.0
      */
-    public static String encodeBytes( byte[] source, int options )
+    public static @RUntainted String encodeBytes(byte[] source, int options )
     {
         return encodeBytes( source, 0, source.length, options );
     }   // end encodeBytes
@@ -602,7 +603,7 @@ public class Base64
      * @see Base64#DONT_BREAK_LINES
      * @since 2.0
      */
-    public static String encodeBytes( byte[] source, int off, int len, int options )
+    public static @RUntainted String encodeBytes( byte[] source, int off, int len, int options )
     {
         // Isolate options
         int dontBreakLines = ( options & DONT_BREAK_LINES );
