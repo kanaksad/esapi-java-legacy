@@ -16,6 +16,8 @@
 package org.owasp.esapi.codecs;
 
 import java.util.regex.Pattern;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.owasp.esapi.codecs.ref.EncodingPatternPreservation;
 
 /**
@@ -35,7 +37,7 @@ public class CSSCodec extends AbstractCharacterCodec
     private static final Pattern RGB_TRPLT_PATTERN = Pattern.compile(RGB_TRPLT);
 
     @Override
-    public String encode(char[] immune, String input) {
+    public @RUntainted String encode(char[] immune, String input) {
          EncodingPatternPreservation tripletCheck = new EncodingPatternPreservation(RGB_TRPLT_PATTERN);
 
          String inputChk = tripletCheck.captureAndReplaceMatches(input);

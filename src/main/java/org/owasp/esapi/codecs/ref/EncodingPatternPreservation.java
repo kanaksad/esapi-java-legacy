@@ -1,5 +1,7 @@
 package org.owasp.esapi.codecs.ref;
 
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -75,7 +77,7 @@ public class EncodingPatternPreservation {
      * @param input String to restore.
      * @return String reference with all values replaced.
      */
-    public String restoreOriginalContent(String input) {
+    public @RUntainted String restoreOriginalContent(String input) {
         String result = input;
         while (replacedContentList.size() > 0) {
             String origValue = replacedContentList.remove(0);
