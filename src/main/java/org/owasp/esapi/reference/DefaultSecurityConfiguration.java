@@ -32,6 +32,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.apache.commons.lang.text.StrTokenizer;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.PropNames;
@@ -1204,7 +1206,7 @@ public class DefaultSecurityConfiguration implements SecurityConfiguration {
     /**
      * {@inheritDoc}
      */
-    public String getResponseContentType() {
+    public @RUntainted String getResponseContentType() {
         return getESAPIProperty( RESPONSE_CONTENT_TYPE, "text/html; charset=UTF-8" );
     }
 
@@ -1309,7 +1311,7 @@ public class DefaultSecurityConfiguration implements SecurityConfiguration {
         return getESAPIProperty( ACCEPT_LENIENT_DATES, false);
     }
 
-    protected String getESAPIProperty( String key, String def ) {
+    protected @RUntainted String getESAPIProperty( String key, String def ) {
         String value = properties.getProperty(key);
         if ( value == null ) {
             logSpecial( "SecurityConfiguration for " + key + " not found in ESAPI.properties. Using default: " + def, null );
