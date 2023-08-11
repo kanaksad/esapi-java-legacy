@@ -465,7 +465,7 @@ public class SecurityWrapperResponse extends HttpServletResponseWrapper implemen
      * Same as HttpServletResponse, no security changes required.
      * @param type
      */
-    public void setContentType(String type) {
+    public void setContentType(@RUntainted String type) {
         getHttpServletResponse().setContentType(type);
     }
 

@@ -28,6 +28,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.apache.commons.fileupload.FileUploadException;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Logger;
@@ -445,7 +447,7 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 	 * response class to use.
 	 */
 	private void sendRedirect(InterceptingHTTPServletResponse response, HttpServletResponse httpResponse,
-			String redirectURL) throws IOException {
+			@RUntainted String redirectURL) throws IOException {
 
 		if (response != null) { // if we've been buffering everything we clean
 								// it all out before sending back.
