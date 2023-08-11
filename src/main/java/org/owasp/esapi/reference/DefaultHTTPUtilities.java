@@ -1052,7 +1052,7 @@ public class DefaultHTTPUtilities implements org.owasp.esapi.HTTPUtilities {
     /**
      * {@inheritDoc}
      */
-    public String setRememberToken( String password, int maxAge, @RUntainted String domain, @RUntainted String path ) {
+    public String setRememberToken(@RUntainted String password, int maxAge, @RUntainted String domain, @RUntainted String path ) {
         return setRememberToken( getCurrentRequest(), getCurrentResponse(), password, maxAge, domain, path );
     }
 
