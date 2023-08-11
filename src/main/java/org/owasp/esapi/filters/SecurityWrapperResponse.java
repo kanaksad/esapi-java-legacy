@@ -20,6 +20,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Logger;
 import org.owasp.esapi.SecurityConfiguration;
@@ -202,7 +204,7 @@ public class SecurityWrapperResponse extends HttpServletResponseWrapper implemen
      * depending on how you have configured ESAPI defaults.
      * @param uri
      */
-    public void addReferer( String uri) {
+    public void addReferer(@RUntainted String uri) {
 
         // TODO: make stripping a global config
         String strippedValue = StringUtilities.stripControls(uri);
