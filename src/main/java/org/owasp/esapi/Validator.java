@@ -23,6 +23,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.owasp.esapi.errors.IntrusionException;
 import org.owasp.esapi.errors.ValidationException;
 
@@ -107,7 +109,7 @@ public interface Validator {
      * @throws ValidationException Input is invalid.
      * @throws IntrusionException Input likely indicates an attack.
      */
-    String getValidInput(String context, String input, String type, int maxLength, boolean allowNull) throws ValidationException, IntrusionException;
+    @RUntainted String getValidInput(String context, String input, String type, int maxLength, boolean allowNull) throws ValidationException, IntrusionException;
 
     /**
      * Returns validated {@code input} as a String with optional canonicalization.
