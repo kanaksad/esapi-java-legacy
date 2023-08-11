@@ -15,6 +15,7 @@
  */
 package org.owasp.esapi.codecs;
 
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.owasp.esapi.EncoderConstants;
 
 
@@ -36,8 +37,8 @@ public class VBScriptCodec extends AbstractCharacterCodec {
      *         the String to encode
      * @return the encoded String
      */
-    public String encode(char[] immune, String input) {
-        StringBuilder sb = new StringBuilder();
+    public @RUntainted String encode(char[] immune, String input) {
+        @RUntainted StringBuilder sb = new StringBuilder();
         boolean encoding = false;
         boolean inquotes = false;
         for ( int i=0; i<input.length(); i++ ) {
