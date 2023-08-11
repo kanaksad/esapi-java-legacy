@@ -585,7 +585,7 @@ public class SecurityWrapperResponse extends HttpServletResponseWrapper implemen
     /**
      * returns a text message for the HTTP response code
      */
-    private String getHTTPMessage(int sc) {
+    private @RUntainted String getHTTPMessage(int sc) {
         return "HTTP error code: " + sc;
     }
 
