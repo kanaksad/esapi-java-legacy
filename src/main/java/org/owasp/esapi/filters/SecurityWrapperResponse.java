@@ -391,7 +391,7 @@ public class SecurityWrapperResponse extends HttpServletResponseWrapper implemen
      * @param sc -- http status code
      * @throws IOException
      */
-    public void sendError(int sc) throws IOException {
+    public void sendError(@RUntainted int sc) throws IOException {
         SecurityConfiguration config = ESAPI.securityConfiguration();
         if(config.getBooleanProp("HttpUtilities.OverwriteStatusCodes")){
             getHttpServletResponse().sendError(HttpServletResponse.SC_OK, getHTTPMessage(sc));
@@ -585,7 +585,7 @@ public class SecurityWrapperResponse extends HttpServletResponseWrapper implemen
     /**
      * returns a text message for the HTTP response code
      */
-    private @RUntainted String getHTTPMessage(int sc) {
+    private @RUntainted String getHTTPMessage(@RUntainted int sc) {
         return "HTTP error code: " + sc;
     }
 

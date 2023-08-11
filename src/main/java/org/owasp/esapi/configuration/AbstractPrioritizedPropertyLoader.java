@@ -1,6 +1,8 @@
 package org.owasp.esapi.configuration;
 
 
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,7 +32,7 @@ public abstract class AbstractPrioritizedPropertyLoader implements EsapiProperty
         Comparable<AbstractPrioritizedPropertyLoader> {
 
     protected final String filename;
-    protected Properties properties;
+    protected @RUntainted Properties properties;
 
     private final int priority;
 

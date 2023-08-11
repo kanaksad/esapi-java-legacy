@@ -22,6 +22,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
@@ -76,11 +78,11 @@ public class ConfigurationParser {
         "before-response"
     };
 
-    public static AppGuardianConfiguration readConfigurationFile(InputStream stream, String webRootDir) throws ConfigurationException {
+    public static AppGuardianConfiguration readConfigurationFile(@RUntainted InputStream stream, String webRootDir) throws ConfigurationException {
 
         AppGuardianConfiguration config = new AppGuardianConfiguration();
 
-        Builder parser = new Builder();
+        @RUntainted Builder parser = new Builder();
         Document doc;
         Element root;
 

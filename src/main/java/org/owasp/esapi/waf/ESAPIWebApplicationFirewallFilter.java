@@ -60,13 +60,13 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 
 	private AppGuardianConfiguration appGuardConfig;
 
-	private static final String CONFIGURATION_FILE_PARAM = "configuration";
-	private static final String LOGGING_FILE_PARAM = "log_settings";
-	private static final String POLLING_TIME_PARAM = "polling_time";
+	private static final @RUntainted String CONFIGURATION_FILE_PARAM = "configuration";
+	private static final @RUntainted String LOGGING_FILE_PARAM = "log_settings";
+	private static final @RUntainted String POLLING_TIME_PARAM = "polling_time";
 
 	private static final int DEFAULT_POLLING_TIME = 30000;
 
-	private String configurationFilename = null;
+	private @RUntainted String configurationFilename = null;
 
 	private long pollingTime;
 
@@ -76,7 +76,7 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 	// private static final String SESSION_COOKIE_CANARY =
 	// "org.owasp.esapi.waf.canary";
 
-	private FilterConfig fc;
+	private @RUntainted FilterConfig fc;
 
 	private final Logger logger = ESAPI.getLogger(ESAPIWebApplicationFirewallFilter.class);
 
@@ -90,7 +90,7 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 	 * @throws FileNotFoundException
 	 *             if the policy file cannot be located
 	 */
-	public void setConfiguration(String policyFilePath, String webRootDir) throws FileNotFoundException {
+	public void setConfiguration(@RUntainted String policyFilePath, String webRootDir) throws FileNotFoundException {
 
 		FileInputStream inputStream = null;
 
@@ -129,7 +129,7 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 	 * configuration object model for use at runtime during the
 	 * <code>doFilter()</code> method.
 	 */
-	public void init(FilterConfig fc) throws ServletException {
+	public void init(@RUntainted FilterConfig fc) throws ServletException {
 
 		/*
 		 * This variable is saved so that we can retrieve it later to re-invoke

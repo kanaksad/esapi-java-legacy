@@ -12,6 +12,8 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.errors.ConfigurationException;
 import org.w3c.dom.Document;
@@ -89,7 +91,7 @@ public class XmlEsapiPropertyLoader extends AbstractPrioritizedPropertyLoader {
      * {@inheritDoc}
      */
     @Override
-    public String getStringProp(String propertyName) throws ConfigurationException {
+    public @RUntainted String getStringProp(@RUntainted String propertyName) throws ConfigurationException {
         String property = properties.getProperty(propertyName);
         if (property == null) {
             throw new ConfigurationException("Property : " + propertyName + " not found in default configuration");
