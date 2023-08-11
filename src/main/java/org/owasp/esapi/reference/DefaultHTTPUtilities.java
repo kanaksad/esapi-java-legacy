@@ -606,7 +606,7 @@ public class DefaultHTTPUtilities implements org.owasp.esapi.HTTPUtilities {
             // Create a progress listener
             ProgressListener progressListener = new ProgressListener() {
                 private long megaBytes = -1;
-                private long progress = 0;
+                private @RUntainted long progress = 0;
 
                 public void update(long pBytesRead, long pContentLength, int pItems) {
                     if (pItems == 0)
@@ -615,7 +615,7 @@ public class DefaultHTTPUtilities implements org.owasp.esapi.HTTPUtilities {
                     if (megaBytes == mBytes)
                         return;
                     megaBytes = mBytes;
-                    progress = (long) (((double) pBytesRead / (double) pContentLength) * 100);
+                    progress = (@RUntainted long) (((double) pBytesRead / (double) pContentLength) * 100);
                     if ( session != null ) {
                         session.setAttribute("progress", Long.toString(progress));
                     }
