@@ -19,6 +19,8 @@
  */
 package org.owasp.esapi.codecs;
 
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
+
 /**
  * This class is intended to be an alternative Abstract Implementation for parsing encoding
  * data by focusing on {@code int} as opposed to {@code Character}.  Because non-BMP code
@@ -37,8 +39,8 @@ public class AbstractIntegerCodec extends AbstractCodec<Integer> {
      * {@inheritDoc}
      */
     @Override
-    public String decode(String input) {
-        StringBuilder sb = new StringBuilder();
+    public @RUntainted String decode(String input) {
+        @RUntainted StringBuilder sb = new StringBuilder();
         PushbackSequence<Integer> pbs = new PushBackSequenceImpl(input);
         while (pbs.hasNext()) {
             Integer c = decodeCharacter(pbs);
