@@ -651,12 +651,12 @@ public interface HTTPUtilities
      * @see HTTPUtilities#setCurrentHTTP(HttpServletRequest, HttpServletResponse)
      */
     @Deprecated
-    String setRememberToken(String password, int maxAge, String domain, String path);
+    String setRememberToken(String password, int maxAge, @RUntainted String domain, @RUntainted String path);
 
     /**
      *
      */
-    String setRememberToken(HttpServletRequest request, HttpServletResponse response, int maxAge, String domain, String path);
+    String setRememberToken(HttpServletRequest request, HttpServletResponse response, int maxAge,@RUntainted String domain, @RUntainted String path);
 
 
     /**
@@ -686,7 +686,7 @@ public interface HTTPUtilities
      * @return encrypted "Remember Me" token stored as a String
      */
     @Deprecated
-    String setRememberToken(HttpServletRequest request, HttpServletResponse response, String password, int maxAge, String domain, String path);
+    String setRememberToken(HttpServletRequest request, HttpServletResponse response, @RUntainted String password, int maxAge, @RUntainted String domain, @RUntainted String path);
 
 
     /**

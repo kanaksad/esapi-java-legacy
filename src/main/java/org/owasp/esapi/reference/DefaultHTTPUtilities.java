@@ -985,7 +985,7 @@ public class DefaultHTTPUtilities implements org.owasp.esapi.HTTPUtilities {
      * @param request
      * @param response
      */
-    public String setRememberToken( HttpServletRequest request, HttpServletResponse response, String password, int maxAge, String domain, String path ) {
+    public String setRememberToken( HttpServletRequest request, HttpServletResponse response, @RUntainted String password, int maxAge, @RUntainted String domain, @RUntainted String path ) {
         User user = ESAPI.authenticator().getCurrentUser();
         try {
             killCookie(request, response, REMEMBER_TOKEN_COOKIE_NAME );
@@ -1016,7 +1016,7 @@ public class DefaultHTTPUtilities implements org.owasp.esapi.HTTPUtilities {
     }
 
 
-    public String setRememberToken(HttpServletRequest request, HttpServletResponse response, int maxAge, String domain, String path){
+    public String setRememberToken(HttpServletRequest request, HttpServletResponse response, int maxAge, @RUntainted String domain, @RUntainted String path){
         String rval = "";
         User user = ESAPI.authenticator().getCurrentUser();
 
@@ -1052,7 +1052,7 @@ public class DefaultHTTPUtilities implements org.owasp.esapi.HTTPUtilities {
     /**
      * {@inheritDoc}
      */
-    public String setRememberToken( String password, int maxAge, String domain, String path ) {
+    public String setRememberToken( String password, int maxAge, @RUntainted String domain, @RUntainted String path ) {
         return setRememberToken( getCurrentRequest(), getCurrentResponse(), password, maxAge, domain, path );
     }
 
