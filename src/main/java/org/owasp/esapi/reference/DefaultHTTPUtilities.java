@@ -32,6 +32,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.ProgressListener;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -341,11 +343,11 @@ public class DefaultHTTPUtilities implements org.owasp.esapi.HTTPUtilities {
         HttpSession oldSession = request.getSession();
 
         // make a copy of the session content
-        Map<String,Object> temp = new ConcurrentHashMap<String,Object>();
+        Map<@RUntainted String,@RUntainted Object> temp = new ConcurrentHashMap<@RUntainted String, @RUntainted Object>();
         Enumeration e = oldSession.getAttributeNames();
         while (e != null && e.hasMoreElements()) {
-            String name = (String) e.nextElement();
-            Object value = oldSession.getAttribute(name);
+            @RUntainted String name = (@RUntainted String) e.nextElement();
+            @RUntainted Object value = (@RUntainted Object) oldSession.getAttribute(name);
             temp.put(name, value);
         }
 
@@ -357,7 +359,7 @@ public class DefaultHTTPUtilities implements org.owasp.esapi.HTTPUtilities {
         user.removeSession( oldSession );
 
         // copy back the session content
-      for (Map.Entry<String, Object> stringObjectEntry : temp.entrySet())
+      for (Map.Entry<@RUntainted String, @RUntainted Object> stringObjectEntry : temp.entrySet())
       {
          newSession.setAttribute(stringObjectEntry.getKey(), stringObjectEntry.getValue());
         }

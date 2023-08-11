@@ -34,6 +34,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
+
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Encoder;
 import org.owasp.esapi.Logger;
@@ -252,7 +254,7 @@ public class DefaultValidator implements org.owasp.esapi.Validator {
      * for additional details.
      */
     @Override
-    public String getValidInput(String context, String input, String type, int maxLength, boolean allowNull) throws ValidationException {
+    public @RUntainted String getValidInput(String context, String input, String type, int maxLength, boolean allowNull) throws ValidationException {
         return getValidInput(context, input, type, maxLength, allowNull, true);
     }
 
@@ -267,7 +269,7 @@ public class DefaultValidator implements org.owasp.esapi.Validator {
      * for additional details.
      */
     @Override
-    public String getValidInput(String context, String input, String type, int maxLength, boolean allowNull, boolean canonicalize) throws ValidationException {
+    public @RUntainted String getValidInput(String context, String input, String type, int maxLength, boolean allowNull, boolean canonicalize) throws ValidationException {
         StringValidationRule rvr = new StringValidationRule( type, encoder );
         Pattern p = ESAPI.securityConfiguration().getValidationPattern( type );
         if ( p != null ) {
@@ -293,7 +295,7 @@ public class DefaultValidator implements org.owasp.esapi.Validator {
      * for additional details.
      */
     @Override
-    public String getValidInput(String context, String input, String type, int maxLength, boolean allowNull, ValidationErrorList errors) throws IntrusionException {
+    public @RUntainted String getValidInput(String context, String input, String type, int maxLength, boolean allowNull, ValidationErrorList errors) throws IntrusionException {
         return getValidInput(context, input, type, maxLength, allowNull, true, errors);
     }
 
@@ -308,7 +310,7 @@ public class DefaultValidator implements org.owasp.esapi.Validator {
      * for additional details.
      */
     @Override
-    public String getValidInput(String context, String input, String type, int maxLength, boolean allowNull, boolean canonicalize, ValidationErrorList errors) throws IntrusionException {
+    public @RUntainted String getValidInput(String context, String input, String type, int maxLength, boolean allowNull, boolean canonicalize, ValidationErrorList errors) throws IntrusionException {
         try {
             return getValidInput(context,  input,  type,  maxLength,  allowNull, canonicalize);
         } catch (ValidationException e) {
