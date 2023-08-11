@@ -70,7 +70,7 @@ public abstract class AbstractCodec<T> implements Codec<T> {
      */
     @Override
     public @RUntainted String encode(char[] immune, String input) {
-        StringBuilder sb = new StringBuilder();
+        @RUntainted StringBuilder sb = new StringBuilder();
         for(int offset  = 0; offset < input.length(); ) {
             final int point = input.codePointAt(offset);
             if (Character.isBmpCodePoint(point)) {
