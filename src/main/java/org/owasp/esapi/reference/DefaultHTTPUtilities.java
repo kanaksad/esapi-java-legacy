@@ -32,8 +32,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import edu.ucr.cs.riple.taint.ucrtainting.qual.RPolyTainted;
 import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.ProgressListener;

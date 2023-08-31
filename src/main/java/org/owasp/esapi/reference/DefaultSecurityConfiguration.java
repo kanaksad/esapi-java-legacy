@@ -32,7 +32,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
-
 import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 import org.apache.commons.lang.text.StrTokenizer;
 import org.owasp.esapi.ESAPI;

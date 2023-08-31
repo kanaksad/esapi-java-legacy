@@ -17,7 +17,6 @@
 package org.owasp.esapi.filters;
 
 import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
-
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

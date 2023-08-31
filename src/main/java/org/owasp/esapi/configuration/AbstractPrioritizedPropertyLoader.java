@@ -2,7 +2,6 @@ package org.owasp.esapi.configuration;
 
 
 import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

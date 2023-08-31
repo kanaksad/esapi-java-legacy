@@ -14,8 +14,6 @@
  * @created 2007
  */
 package org.owasp.esapi.codecs;
-
-
 import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /**

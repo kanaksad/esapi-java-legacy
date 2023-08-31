@@ -14,7 +14,6 @@
  * @created 2009
  */
 package org.owasp.esapi.waf.actions;
-
 import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 /**
