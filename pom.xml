@@ -986,9 +986,9 @@
                                     <version>2.20.0</version>
                                 </path>
                                 <path>
-                                    <groupId>edu.ucr.cs.riple.taint</groupId>
-                                    <artifactId>ucrtainting-checker</artifactId>
-                                    <version>0.1</version>
+                                    <groupId>org.checkerframework</groupId>
+                                    <artifactId>checker</artifactId>
+                                    <version>3.35.0</version>
                                 </path>
 <!--                                <path>-->
 <!--                                    <groupId>edu.ucr.cs.riple.annotator</groupId>-->
@@ -998,7 +998,7 @@
                             </annotationProcessorPaths>
                             <annotationProcessors>
                                 <!-- Add all the checkers you want to enable here -->
-                                <annotationProcessor>edu.ucr.cs.riple.taint.ucrtainting.UCRTaintingChecker</annotationProcessor>
+                                <annotationProcessor>org.checkerframework.checker.tainting.TaintingChecker</annotationProcessor>
                             </annotationProcessors>
                             <compilerArgs>
                                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
@@ -1010,10 +1010,11 @@
                                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
                                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
                                 <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                                <arg>-Astubs="/Users/kknock/RIPLE/taint/summer/stubs/"</arg>
 <!--                                <arg>-Awarns</arg>-->
-                                <arg>-AannotatedPackages=org.owasp.esapi</arg>
-                                <arg>-AenableLibraryCheck</arg>
-                                <arg>-AenableSideEffect</arg>
+<!--                                <arg>-AannotatedPackages=org.owasp.esapi</arg>-->
+<!--                                <arg>-AenableLibraryCheck</arg>-->
+<!--                                <arg>-AenableSideEffect</arg>-->
 <!--                                <arg>-AenableValidationCheck</arg>-->
 <!--                                <arg>-AenableSerialization</arg>-->
 <!--                                <arg>-AserializationConfigPath=/tmp/ucr-tainting/esapi/taint.xml</arg>-->
